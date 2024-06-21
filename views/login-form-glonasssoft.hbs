@@ -1,0 +1,41 @@
+<form class='settings__form-metafleet' action='/connect/Glonasssoft' method='POST'>
+  <div class='settings__triangle'></div>
+  <div class='settings__form-title'>
+    Enter the necessary information to log in to
+    <span>
+      {{systemName}}
+    </span>
+    <br />
+    with host:
+    <span>
+      {{host}}
+    </span>
+  </div>
+  <input type='hidden' name='systemName' value='{{systemName}}' />
+  <input type='hidden' name='host' value='{{host}}' />
+  <table>
+    <tr class='settings__form-input'>
+      <td align='right'>
+        <label for='login'>
+          Email:
+        </label>
+      </td>
+      <td>
+        <input type='text' id='login' name='login' required />
+      </td>
+    </tr>
+    <tr class='settings__form-input'>
+      <td align='right'>
+        <label for='password'>
+          Password:
+        </label>
+      </td>
+      <td>
+        <input type='password' id='password' name='password' required />
+      </td>
+    </tr>
+  </table>
+  <button class='settings__form-metafleet-submit' type='submit'>
+    Login
+  </button>
+</form>

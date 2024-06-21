@@ -1,0 +1,19 @@
+<div class='settings__sidebar'>
+  <h4>
+    Customized monitoring systems
+  </h4>
+
+  {{#each connectedSystems}}
+    <a class='settings__sidebar-item {{#ifCond ../currentSystemName this.monitoringSystem.name}}active triangle no-hover{{/ifCond}}' href='/settings/{{this.monitoringSystem.name}}'>
+      <div class='settings__sidebar-item-name'>
+        {{this.monitoringSystem.name}}
+      </div>
+      <div class='settings__sidebar-item-date'>
+        Logged in:
+        <span>
+          {{this.updatedAt}}
+        </span>
+      </div>
+    </a>
+  {{/each}}
+</div>

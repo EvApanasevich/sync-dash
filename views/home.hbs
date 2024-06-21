@@ -1,0 +1,142 @@
+<main class="container">
+  <div class="settings">
+    <div class="settings__panel">
+
+      {{#isNotEmpty systems}}
+        <div class="settings__select-block">
+          <label class="settings__select-label" for="select-system">
+            Select a monitoring system
+          </label>
+          <select id="select-system" name="selectedSystem">
+
+            {{#each systems}}
+              <option class="option" value="{{this.name}}" {{#ifCond ../currentSystemName this.name}}selected{{/ifCond}}>
+                {{this.name}}
+              </option>
+            {{/each}}
+
+          </select>
+        </div>
+        <div class="settings__select-block">
+          <label class="settings__host-label" for="select-host">Specify the host address to which requests will be sent.<br>This information can be obtained from your companys system administrator.
+            <br>For example: (<span>https://hosting.wialon.com</span>)
+          </label>
+
+          {{#if error}}
+            <input class="settings__host-input" id="select-host" type="text" autocomplete="off" value={{host}}>
+          {{else}}
+            <input class="settings__host-input" id="select-host" type="text" autocomplete="off" value="https://">
+          {{/if}}
+
+        </div>
+        <div id="host-error" class="host-error"></div>
+        <button id="fetch-form-button" class="settings__enter-system">
+          Gain access to the system
+        </button>
+
+        {{#if error}}
+          <div id="login-error" class="login-error">{{error}}</div>
+        {{/if}}
+        
+        <div class="settings__form" id="login-form-container">
+          <!-- Форма будет загружена сюда -->
+        </div>
+      {{else}}
+        <p>
+          You are registered in all monitoring systems. Select the desired system in the sidebar on the right side for further customization.
+        </p>
+      {{/isNotEmpty}}
+
+    </div>
+  </div>
+</main>
+
+{{#isNotEmpty systems}}
+  {{> scriptGetForm }}
+  {{> scriptForWialon }}
+{{/isNotEmpty}}
+
+{{#*inline "scriptGetForm"}}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const hostInput = document.getElementById("select-host");
+      const hostError = document.getElementById("host-error");
+
+      if(document.getElementById("login-error")) {
+        loadForm();
+      }
+
+      document.getElementById("fetch-form-button").addEventListener("click", async () => {
+        if(hostInput.value.length <= 8) {
+          hostError.innerText = "Type your host";
+        } else {
+          hostError.innerText = "";
+          await loadForm();
+        }
+      });
+      async function loadForm() {
+        const systemName = document.getElementById("select-system").value;
+        const response = await fetch(`/connect/${systemName}?host=${hostInput.value}`);
+        const formHtml = await response.text();
+        document.getElementById('login-form-container').innerHTML = formHtml;
+        if (systemName === "Wialon") {
+          attachFormEventListenersForWialon();
+        }
+      }
+    });
+  </script>
+{{/inline}}
+
+
+{{#*inline "scriptForWialon"}}
+  <script type="text/javascript" src="//hst-api.wialon.com/wsdk/script/wialon.js"></script>
+  <script>
+    function attachFormEventListenersForWialon() {
+      window.addEventListener("message", tokenReceived);
+
+      function tokenReceived(e) {
+        var msg = e.data;
+
+        if (typeof msg === "string" && msg.indexOf("access_token=") >= 0) {
+          var token = msg.replace("access_token=", "");
+
+          wialon.core.Session.getInstance().initSession("https://hst-api.wialon.com");
+
+          wialon.core.Session.getInstance().loginToken(token, "", function(code) {
+            if (code) {
+              console.error("Login failed with code:", code);
+              return;
+            }
+            
+            var user = wialon.core.Session.getInstance().getCurrUser().getName();
+
+            fetch('/connect/Wialon', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ token: token, userName: user, systemName: "Wialon" })
+            })
+            .then(response => {
+              if (response.redirected) {
+                window.location.href = response.url;
+              } else {
+                return response.json();
+              }
+            })
+            .then(data => {
+              if (data) {
+                console.log('Success:', data);
+              }
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+          });
+
+          window.removeEventListener("message", tokenReceived);
+        }
+      }
+    }
+  </script>
+{{/inline}}

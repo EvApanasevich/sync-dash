@@ -1,0 +1,29 @@
+<header class='header'>
+  <a href='/' class='header__logo'>
+    Mechatronics-SyncDash
+  </a>
+  <div class='header__profile'>
+    <div class='header__profile-greeting'>
+      Hello
+    </div>
+    {{#if email}}
+      <div class='header__profile-login'>
+        {{email}}
+      </div>
+    {{else}}
+      <div class='header__profile-login'>
+        Guest
+      </div>
+    {{/if}}
+
+    {{#if email}}
+      <a href='/auth/logout' class='header__logout'>
+        Log out
+      </a>
+    {{else}}
+      <a href='/auth/login' class='header__login'>
+        Log in
+      </a>
+    {{/if}}
+  </div>
+</header>

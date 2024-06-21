@@ -1,0 +1,58 @@
+<form class='settings__form-metafleet' action='/connect/MetaFleet' method='POST'>
+  <div class='settings__triangle'></div>
+  <div class='settings__form-title'>
+    Enter the necessary information to log in to
+    <span>
+      {{systemName}}
+    </span>
+    <br />
+    with host:
+    <span>
+      {{host}}
+    </span>
+  </div>
+  <input type='hidden' name='systemName' value='{{systemName}}' />
+  <input type='hidden' name='host' value='{{host}}' />
+  <table>
+    <tr class='settings__form-input'>
+      <td align='right'>
+        <label for='email'>
+          Email:
+        </label>
+      </td>
+      <td>
+        <input type='text' id='email' name='email' required />
+      </td>
+    </tr>
+    <tr class='settings__form-input'>
+      <td align='right'>
+        <label for='password'>
+          Password:
+        </label>
+      </td>
+      <td>
+        <input type='password' id='password' name='password' required />
+      </td>
+    </tr>
+    <tr class='settings__form-input'>
+      <td align='right'>
+        <label for='select-language'>
+          Language:
+        </label>
+      </td>
+      <td>
+        <select id='select-language' name='lang'>
+          <option class='option' value='ru'>
+            RU
+          </option>
+          <option class='option' value='en'>
+            EN
+          </option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <button class='settings__form-metafleet-submit' type='submit'>
+    Login
+  </button>
+</form>

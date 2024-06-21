@@ -1,0 +1,504 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+//BODY
+.body {
+  display: flex;
+  flex-direction: column;
+  color: rgb(77, 77, 77);
+  font-family: sans-serif;
+
+  &__content {
+    display: flex;
+    height: 100%;
+  }
+}
+// MAIN
+.container {
+  flex-grow: 1;
+}
+
+//HEADER
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  border-bottom: 3px solid lightblue;
+  padding: 0 1rem;
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(0, 0, 160);
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+
+    &-greeting {
+      padding: 0 1rem;
+    }
+
+    &-login {
+      padding: 0 3rem 0 1rem;
+      font-weight: 600;
+    }
+  }
+
+  &__logout {
+    padding: 0.5rem;
+    color: rgb(0, 0, 160);
+    font-weight: 600;
+    background: none;
+    border: 1px solid lightblue;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__login {
+    @extend .header__logout;
+    background-color: lightblue;
+  }
+}
+
+// LOGIN_PAGE
+.auth-error {
+  font-weight: 600;
+  color: rgb(236, 104, 104);
+  text-align: center;
+}
+.login {
+  width: 25rem;
+  padding: 10rem 1rem 1rem 1rem;
+  margin: 0 auto;
+
+  &__title {
+    text-align: center;
+    color: rgb(0, 0, 160);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &-question {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    &-signup {
+      padding: 0 1rem;
+      color: rgb(0, 0, 160);
+    }
+
+    &-label {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    &-input {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      outline: none;
+      font-size: 1rem;
+      border: 1px solid lightblue;
+      border-radius: 0.3rem;
+      color: inherit;
+    }
+
+    &-submit {
+      width: 5rem;
+      padding: 0.5rem;
+      margin: 0 auto;
+      color: rgb(0, 0, 160);
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    &-submit:hover {
+      background-color: lightblue;
+      border-radius: 0.3rem;
+    }
+  }
+}
+
+// REGISTRATION_PAGE
+.registration {
+  width: 25rem;
+  padding: 10rem 1rem 1rem 1rem;
+  margin: 0 auto;
+
+  &__title {
+    text-align: center;
+    color: rgb(0, 0, 160);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &-question {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    &-signup {
+      padding: 0 1rem;
+      color: rgb(0, 0, 160);
+    }
+
+    &-label {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    &-input {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      outline: none;
+      font-size: 1rem;
+      border: 1px solid lightblue;
+      border-radius: 0.3rem;
+      color: inherit;
+    }
+
+    &-submit {
+      width: 5rem;
+      padding: 0.5rem;
+      margin: 0 auto;
+      color: rgb(0, 0, 160);
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    &-submit:hover {
+      background-color: lightblue;
+      border-radius: 0.3rem;
+    }
+  }
+}
+
+/// IFRAME
+.iframe {
+  width: 100%;
+  height: 31rem;
+  border: none;
+}
+
+// HOME
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &__settings-text {
+    font-size: inherit;
+  }
+
+  &__access-text {
+    color: lightcoral;
+  }
+
+  &__settings-link {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      color: rgb(0, 0, 160);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 0.2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      background-color: lightblue;
+    }
+
+    .disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      background-color: lightblue;
+      border-radius: 0.2rem;
+    }
+  }
+}
+
+// SETTINGS
+.settings {
+  display: flex;
+  height: 100%;
+
+  &__panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      padding: 10rem;
+      font-size: 1.2rem;
+      text-align: center;
+      color: rgb(0, 0, 160);
+    }
+  }
+
+  /// SIDEBAR
+
+  &__sidebar {
+    width: 20%;
+    border-left: 3px solid lightblue;
+
+    h4 {
+      text-align: center;
+    }
+
+    .active {
+      background-color: rgb(77, 77, 77);
+      color: lightblue;
+      cursor: auto;
+    }
+  }
+
+  &__sidebar-item {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 3rem;
+    padding: 0.5rem 0;
+    color: rgb(77, 77, 77);
+    background-color: lightblue;
+    border-top: 3px solid white;
+    cursor: pointer;
+    transition: font-weight 0.2s ease;
+    text-decoration: none;
+  }
+  &__sidebar-item.triangle::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 2rem solid transparent;
+    border-bottom: 2rem solid transparent;
+    border-right: 1rem solid rgb(77, 77, 77);
+    position: absolute;
+    top: 50%;
+    left: -1rem;
+    transform: translateY(-50%);
+  }
+
+  &__sidebar-item:hover {
+  }
+  &__sidebar-item.no-hover:hover {
+    color: lightblue; /* Цвет при hover, который отменяет действие */
+  }
+
+  &__sidebar-item-name {
+    text-align: center;
+    font-size: 1.4rem;
+    padding-bottom: 0.3rem;
+  }
+
+  &__sidebar-item-date {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  /// PANEL
+
+  .host-error {
+    color: rgb(236, 104, 104);
+  }
+  .login-error {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: rgb(236, 104, 104);
+  }
+
+  &__select-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+
+    select {
+      padding: 0.7rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgb(0, 0, 160);
+      border: none;
+      border-bottom: 1px solid lightblue;
+      cursor: pointer;
+    }
+    select:focus {
+      outline: none;
+    }
+    input {
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: rgb(0, 0, 160);
+      border: none;
+      border-bottom: 1px solid lightblue;
+    }
+    input:focus {
+      outline: none;
+    }
+    span {
+      color: rgb(0, 0, 160);
+      font-size: 0.9rem;
+    }
+    .option {
+      font-size: 1rem;
+      color: rgb(77, 77, 77);
+    }
+  }
+
+  &__select-label {
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  &__host-label {
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  &__host-input {
+    min-width: 20rem;
+  }
+
+  &__enter-system {
+    margin: 3rem 0 2rem 0;
+    display: inline-block;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: rgb(0, 0, 160);
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  // METAFLEET
+  &__form-metafleet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border: 1px solid lightblue;
+    border-radius: 0.3rem;
+    padding: 2rem;
+  }
+
+  &__triangle {
+    position: absolute;
+    top: -0.58rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    border-top: 1px solid lightblue;
+    border-left: 1px solid lightblue;
+    rotate: 45deg;
+  }
+
+  &__form-title {
+    margin-bottom: 1rem;
+    text-align: center;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  &__form-input {
+    td {
+      padding-top: 1rem;
+
+      input {
+        padding: 0.2rem;
+        outline: none;
+        font-size: 1rem;
+        border: 1px solid lightblue;
+        border-radius: 0.3rem;
+        color: inherit;
+      }
+
+      select {
+        padding: 0.1rem;
+        outline: none;
+        font-size: 1rem;
+        border: 1px solid lightblue;
+        border-radius: 0.3rem;
+        color: inherit;
+      }
+    }
+  }
+
+  &__form-metafleet-submit {
+    width: 5rem;
+    padding: 0.5rem;
+    margin: 0 auto;
+    color: rgb(0, 0, 160);
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+    width: max-content;
+  }
+  &__form-metafleet-submit:hover {
+    background-color: lightblue;
+    border-radius: 0.3rem;
+  }
+
+  &__success-login {
+    color: limegreen;
+
+    span {
+      color: rgb(77, 77, 77);
+      font-size: 1.2rem;
+      padding-left: 1rem;
+    }
+  }
+
+  // WIALON
+  &__form-wialon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border: 1px solid lightblue;
+    border-radius: 0.3rem;
+    padding: 2rem;
+  }
+}

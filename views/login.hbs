@@ -1,0 +1,42 @@
+<main class='container'>
+  <div class='login'>
+    <h2 class='login__title'>
+      Login
+    </h2>
+    {{#if error}}
+      <div id="auth-error" class='auth-error'>{{error}}</div>
+    {{/if}}
+    <form class='login__form' action='/auth/login' method='POST'>
+      <div class='login__form-question'>
+        Not registered yet?
+        <a class='login__form-signup' href='/auth/registration'>
+          Sign up
+        </a>
+      </div>
+      <label class='login__form-label' for='email'>Email:</label>
+      <input class='login__form-input' id='email' type='email' name='email' required/>
+      <label class='login__form-label' for='password'>Password:</label>
+      <input class='login__form-input' id='password' type='password' name='password' required/>
+      <input class='login__form-submit' type='submit' name='submit' value='Sign in' />
+    </form>
+  </div>
+</main>
+
+{{> scriptAuthError }}
+
+{{#*inline "scriptAuthError"}}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const authError = document.getElementById("auth-error")
+
+      if(authError) {
+        document.getElementById("email").addEventListener('input', function() {
+          authError.textContent = "";
+        })
+        document.getElementById("password").addEventListener('input', function() {
+          authError.textContent = "";
+        })
+      }
+    });
+  </script>
+{{/inline}}

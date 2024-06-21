@@ -1,0 +1,28 @@
+<main class='container'>
+  <div class='registration'>
+    <h2 class='registration__title'>
+      Registration
+    </h2>
+    <form class='registration__form' action='/auth/registration' method='POST'>
+      <div class='registration__form-question'>
+        Registered yet?
+        <a class='registration__form-signup' href='/auth/login'>
+          Sign in
+        </a>
+      </div>
+      <label class='registration__form-label' for='email'>
+        Email:
+      </label>
+      <input class='registration__form-input' id='email' type='email' name='email' />
+      <label class='registration__form-label' for='password'>
+        Password:
+      </label>
+      <input class='registration__form-input' id='password' type='password' name='password' />
+      <label class='registration__form-label' for='confirm-password'>
+        Confirm Password:
+      </label>
+      <input class='registration__form-input' type='password' id='confirm-password' name='confirmPassword' />
+      <input class='registration__form-submit' type='submit' name='submit' value='Sign up' />
+    </form>
+  </div>
+</main>

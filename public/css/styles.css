@@ -1,0 +1,435 @@
+@charset "UTF-8";
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  color: rgb(77, 77, 77);
+  font-family: sans-serif;
+}
+.body__content {
+  display: flex;
+  height: 100%;
+}
+
+.container {
+  flex-grow: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  border-bottom: 3px solid lightblue;
+  padding: 0 1rem;
+}
+.header__logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(0, 0, 160);
+}
+.header__profile {
+  display: flex;
+  align-items: center;
+}
+.header__profile-greeting {
+  padding: 0 1rem;
+}
+.header__profile-login {
+  padding: 0 3rem 0 1rem;
+  font-weight: 600;
+}
+.header__logout, .header__login {
+  padding: 0.5rem;
+  color: rgb(0, 0, 160);
+  font-weight: 600;
+  background: none;
+  border: 1px solid lightblue;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.header__login {
+  background-color: lightblue;
+}
+
+.auth-error {
+  font-weight: 600;
+  color: rgb(236, 104, 104);
+  text-align: center;
+}
+
+.login {
+  width: 25rem;
+  padding: 10rem 1rem 1rem 1rem;
+  margin: 0 auto;
+}
+.login__title {
+  text-align: center;
+  color: rgb(0, 0, 160);
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+.login__form-question {
+  margin: 1rem 0;
+  text-align: center;
+}
+.login__form-signup {
+  padding: 0 1rem;
+  color: rgb(0, 0, 160);
+}
+.login__form-label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+.login__form-input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid lightblue;
+  border-radius: 0.3rem;
+  color: inherit;
+}
+.login__form-submit {
+  width: 5rem;
+  padding: 0.5rem;
+  margin: 0 auto;
+  color: rgb(0, 0, 160);
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.login__form-submit:hover {
+  background-color: lightblue;
+  border-radius: 0.3rem;
+}
+
+.registration {
+  width: 25rem;
+  padding: 10rem 1rem 1rem 1rem;
+  margin: 0 auto;
+}
+.registration__title {
+  text-align: center;
+  color: rgb(0, 0, 160);
+}
+.registration__form {
+  display: flex;
+  flex-direction: column;
+}
+.registration__form-question {
+  margin: 1rem 0;
+  text-align: center;
+}
+.registration__form-signup {
+  padding: 0 1rem;
+  color: rgb(0, 0, 160);
+}
+.registration__form-label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+.registration__form-input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid lightblue;
+  border-radius: 0.3rem;
+  color: inherit;
+}
+.registration__form-submit {
+  width: 5rem;
+  padding: 0.5rem;
+  margin: 0 auto;
+  color: rgb(0, 0, 160);
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.registration__form-submit:hover {
+  background-color: lightblue;
+  border-radius: 0.3rem;
+}
+
+.iframe {
+  width: 100%;
+  height: 31rem;
+  border: none;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.home__settings-text {
+  font-size: inherit;
+}
+.home__access-text {
+  color: lightcoral;
+}
+.home__settings-link {
+  text-align: center;
+}
+.home__settings-link a {
+  display: inline-block;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  color: rgb(0, 0, 160);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.home__settings-link a:hover {
+  background-color: lightblue;
+}
+.home__settings-link .disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  background-color: lightblue;
+  border-radius: 0.2rem;
+}
+
+.settings {
+  display: flex;
+  height: 100%;
+}
+.settings__panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.settings__panel p {
+  padding: 10rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgb(0, 0, 160);
+}
+.settings__sidebar {
+  width: 20%;
+  border-left: 3px solid lightblue;
+}
+.settings__sidebar h4 {
+  text-align: center;
+}
+.settings__sidebar .active {
+  background-color: rgb(77, 77, 77);
+  color: lightblue;
+  cursor: auto;
+}
+.settings__sidebar-item {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  padding: 0.5rem 0;
+  color: rgb(77, 77, 77);
+  background-color: lightblue;
+  border-top: 3px solid white;
+  cursor: pointer;
+  transition: font-weight 0.2s ease;
+  text-decoration: none;
+}
+.settings__sidebar-item.triangle::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 2rem solid transparent;
+  border-bottom: 2rem solid transparent;
+  border-right: 1rem solid rgb(77, 77, 77);
+  position: absolute;
+  top: 50%;
+  left: -1rem;
+  transform: translateY(-50%);
+}
+.settings__sidebar-item.no-hover:hover {
+  color: lightblue; /* Цвет при hover, который отменяет действие */
+}
+.settings__sidebar-item-name {
+  text-align: center;
+  font-size: 1.4rem;
+  padding-bottom: 0.3rem;
+}
+.settings__sidebar-item-date {
+  text-align: center;
+  font-size: 0.8rem;
+}
+.settings .host-error {
+  color: rgb(236, 104, 104);
+}
+.settings .login-error {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: rgb(236, 104, 104);
+}
+.settings__select-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+.settings__select-block select {
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(0, 0, 160);
+  border: none;
+  border-bottom: 1px solid lightblue;
+  cursor: pointer;
+}
+.settings__select-block select:focus {
+  outline: none;
+}
+.settings__select-block input {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(0, 0, 160);
+  border: none;
+  border-bottom: 1px solid lightblue;
+}
+.settings__select-block input:focus {
+  outline: none;
+}
+.settings__select-block span {
+  color: rgb(0, 0, 160);
+  font-size: 0.9rem;
+}
+.settings__select-block .option {
+  font-size: 1rem;
+  color: rgb(77, 77, 77);
+}
+.settings__select-label {
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.settings__host-label {
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.settings__host-input {
+  min-width: 20rem;
+}
+.settings__enter-system {
+  margin: 3rem 0 2rem 0;
+  display: inline-block;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: rgb(0, 0, 160);
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: lightblue;
+  border: 1px solid lightblue;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.settings__enter-system:hover {
+  background-color: white;
+}
+.settings__form-metafleet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border: 1px solid lightblue;
+  border-radius: 0.3rem;
+  padding: 2rem;
+}
+.settings__triangle {
+  position: absolute;
+  top: -0.58rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  border-top: 1px solid lightblue;
+  border-left: 1px solid lightblue;
+  rotate: 45deg;
+}
+.settings__form-title {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.settings__form-title span {
+  font-weight: 600;
+}
+.settings__form-input td {
+  padding-top: 1rem;
+}
+.settings__form-input td input {
+  padding: 0.2rem;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid lightblue;
+  border-radius: 0.3rem;
+  color: inherit;
+}
+.settings__form-input td select {
+  padding: 0.1rem;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid lightblue;
+  border-radius: 0.3rem;
+  color: inherit;
+}
+.settings__form-metafleet-submit {
+  width: 5rem;
+  padding: 0.5rem;
+  margin: 0 auto;
+  color: rgb(0, 0, 160);
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  width: max-content;
+}
+.settings__form-metafleet-submit:hover {
+  background-color: lightblue;
+  border-radius: 0.3rem;
+}
+.settings__success-login {
+  color: limegreen;
+}
+.settings__success-login span {
+  color: rgb(77, 77, 77);
+  font-size: 1.2rem;
+  padding-left: 1rem;
+}
+.settings__form-wialon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border: 1px solid lightblue;
+  border-radius: 0.3rem;
+  padding: 2rem;
+}
+
+/*# sourceMappingURL=styles.css.map */
